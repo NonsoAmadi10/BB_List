@@ -1,23 +1,28 @@
-{
-  "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  
+const dotenv = require('dotenv');
+
+dotenv.config();
+const databaseEnvDetails = {
+  username: process.env.DB_CONFIG_USERNAME,
+  password: process.env.DB_CONFIG_PASSWORD,
+  host: process.env.DB_CONFIG_HOST,
+  port: process.env.DB_CONFIG_PORT,
+  dialect: 'postgres',
+  logging: false,
+};
+
+const config = {
+  development: {
+    database: process.env.DB_CONFIG_DEV,
+    ...databaseEnvDetails,
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  test: {
+    database: process.env.DB_CONFIG_TEST,
+    ...databaseEnvDetails
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  production: {
+    DATABASE_URL: process.env.DATABASE_URL
   }
-}
+};
+
+module.exports = config;

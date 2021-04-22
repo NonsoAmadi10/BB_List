@@ -7,7 +7,11 @@
   "author": "NonsoAmadi10 <nonsoamadi@aol.com>",
   "license": "MIT",
   "private": false,
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "dev": "export NODE_ENV=development && nodemon ./src/index.ts",
+    "start": "yarn build && node ./build/index.js"
+  },
   "dependencies": {
     "@types/validator": "^13.1.3",
     "bcrypt": "^5.0.1",
