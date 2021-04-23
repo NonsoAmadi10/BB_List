@@ -82,6 +82,8 @@ jobs:
             mkdir -p app
             cd app
             git clone https://github.com/NonsoAmadi10/BB_List.git .
+            chmod u+x prod.sh
+            ./prod.sh
             echo 'Deployment successful'
       
 
