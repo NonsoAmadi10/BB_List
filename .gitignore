@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+src/db/models/List.ts
+src/db/models/Task.ts
