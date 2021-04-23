@@ -45,5 +45,25 @@ jobs:
 
       
       - run: yarn test
+  
+
+  deploy-api-1:
+    # Deploy the to the first VM
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy API to the Digital Ocean Droplet
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.DO_VM_1 }}
+          username: root
+          key: ${{ secrets.DO_API_KEY }}
+          port: 22
+          script: | 
+            mkdir app 
+            cd app 
+            git clone git@github.com:NonsoAmadi10/BB_List.git . 
+            echo 'Deployment successful'
+      
 
 
