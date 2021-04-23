@@ -22,23 +22,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 14.x, 15.x]
-    
-    
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    
+      
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -52,10 +36,11 @@ jobs:
       - name: Install dependencies
         run: yarn 
         env:
-            POSTGRES_HOST: localhost
+            POSTGRES_HOST: ${{ secrets.DB_CONFIG_HOST }}
             POSTGRES_PORT: 5432
-            POSTGRES_USER: postgres
-            TEST_DB: testdb
+            POSTGRES_USER: ${{ secrets.DB_CONFIG_USERNAME }}
+            POSTGRES_PASSWORD: ${{ secrets.DB_CONFIG_PASSWORD }}
+            TEST_DB: ${{ secrets.DB_CONFIG_TEST }}
 
       
       - run: yarn test
