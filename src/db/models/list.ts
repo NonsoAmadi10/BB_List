@@ -36,7 +36,7 @@ List.hasMany(Task, {
 
 
 Task.belongsTo(List, {
-  foreignKey: 'taskId',
+  foreignKey: 'listId',
   as: 'list'
 })
 

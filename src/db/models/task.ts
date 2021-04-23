@@ -20,9 +20,10 @@ const Task = sequelize.define<TaskInstance>(
     },
     completed: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
 
-    taskId: {
+    listId: {
       allowNull: true,
       type: DataTypes.UUID,
     },
