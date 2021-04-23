@@ -19,6 +19,12 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+        POSTGRES_HOST: ${{ secrets.DB_CONFIG_HOST }}
+        POSTGRES_PORT: 5432
+        POSTGRES_USER: ${{ secrets.DB_CONFIG_USERNAME }}
+        POSTGRES_PASSWORD: ${{ secrets.DB_CONFIG_PASSWORD }}
+        TEST_DB: ${{ secrets.DB_CONFIG_TEST }}
     strategy:
       matrix:
         node-version: [ 14.x, 15.x]
@@ -35,12 +41,7 @@ jobs:
          
       - name: Install dependencies
         run: yarn 
-        env:
-            POSTGRES_HOST: ${{ secrets.DB_CONFIG_HOST }}
-            POSTGRES_PORT: 5432
-            POSTGRES_USER: ${{ secrets.DB_CONFIG_USERNAME }}
-            POSTGRES_PASSWORD: ${{ secrets.DB_CONFIG_PASSWORD }}
-            TEST_DB: ${{ secrets.DB_CONFIG_TEST }}
+        
 
       
       - run: yarn test
