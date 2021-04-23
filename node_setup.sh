@@ -21,7 +21,7 @@ function install_nodejs {
     echo -e  " ${BLUE} yarn has been installed! \033[0m"
     sleep 2 
     echo -e  " ${BLUE} Installing Pm2"
-    npm i -g Pm2
+    npm i -g pm2
     echo -e  " ${BLUE} Pm2 has been installed! \033[0m"
 }
 
