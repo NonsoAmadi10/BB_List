@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [ 14.x, 15.x]
     
     
     services:
@@ -31,7 +31,7 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          DB_CONFIG_PASSWORD: postgres
+          POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -52,11 +52,11 @@ jobs:
       - name: Install dependencies
         run: yarn 
         env:
-            DB_CONFIG_USERNAME: postgres
-            
-            DB_CONFIG_HOST: postgres
-            DB_CONFIG_PORT: 5432
-            DB_CONFIG_TEST: postgresTest
+            POSTGRES_HOST: localhost
+            POSTGRES_PORT: 5432
+            POSTGRES_USER: postgres
+            TEST_DB: testdb
+
       
       - run: yarn test
 

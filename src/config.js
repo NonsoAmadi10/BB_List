@@ -3,10 +3,10 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const databaseEnvDetails = {
-  username: process.env.DB_CONFIG_USERNAME,
-  password: process.env.DB_CONFIG_PASSWORD,
-  host: process.env.DB_CONFIG_HOST,
-  port: process.env.DB_CONFIG_PORT,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  host: process.env.DB_POSTGRES_HOST,
+  port: process.env.DB_POSTGRES_PORT,
   dialect: 'postgres',
   logging: false,
 };
@@ -17,7 +17,7 @@ const config = {
     ...databaseEnvDetails,
   },
   test: {
-    database: process.env.DB_CONFIG_TEST,
+    database: process.env.TEST_DB,
     ...databaseEnvDetails
   },
   production: {
