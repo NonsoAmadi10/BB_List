@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '.'
 import TaskInstance from '../../interfaces/task';
-import { v4 } from 'uuid';
+
 
 const Task = sequelize.define<TaskInstance>(
   'Task', {
@@ -12,7 +12,7 @@ const Task = sequelize.define<TaskInstance>(
       primaryKey: true,
       type: DataTypes.UUID,
       unique: true,
-      defaultValue: v4()
+      defaultValue: DataTypes.UUIDV4
     },
     task: {
       allowNull: true,

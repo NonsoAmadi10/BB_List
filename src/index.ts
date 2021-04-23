@@ -5,4 +5,6 @@ config();
 const port: String | Number = process.env.PORT || 3000;
 
 
-app.listen(port, () => console.log(`Server is Running on port ${port}...`))
+app.listen(port, () => console.log(`Server is Running on port ${port}...`));
+
+export default app;
