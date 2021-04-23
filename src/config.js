@@ -5,8 +5,8 @@ dotenv.config();
 const databaseEnvDetails = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
-  host: process.env.DB_POSTGRES_HOST,
-  port: process.env.DB_POSTGRES_PORT,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
   dialect: 'postgres',
   logging: false,
 };
