@@ -63,7 +63,25 @@ jobs:
             mkdir -p app 
             cd app 
             git clone https://github.com/NonsoAmadi10/BB_List.git . 
-            
+            chmod u+x prod.sh
+            ./prod.sh
+            echo 'Deployment successful'
+  
+  deploy-api-2:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy API to the Digital Ocean Droplet
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.DO_VM_2 }}
+          username: root
+          key: ${{ secrets.DO_API_KEY }}
+          port: 22
+          script: |
+            mkdir -p app
+            cd app
+            git clone https://github.com/NonsoAmadi10/BB_List.git .
             echo 'Deployment successful'
       
 

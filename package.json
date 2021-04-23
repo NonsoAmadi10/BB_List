@@ -12,7 +12,7 @@
     "test": "export NODE_ENV=test && yarn undo:migration && yarn migrate && env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts' --exit --no-timeout ",
     "dev": "export NODE_ENV=development && nodemon ./src/index.ts",
     "start": "yarn prod && yarn build && node ./build/index.js",
-    "prod": "yarn undo:migration && yarn migrate",
+    "prod": "export NODE_ENV=production && yarn undo:migration && yarn migrate && yarn build",
     "undo:seed": "./node_modules/.bin/ts-node ./node_modules/.bin/sequelize db:seed:undo:all",
     "seed": "./node_modules/.bin/ts-node ./node_modules/.bin/sequelize db:seed:all",
     "undo:migration": "./node_modules/.bin/ts-node ./node_modules/.bin/sequelize db:migrate:undo:all",
