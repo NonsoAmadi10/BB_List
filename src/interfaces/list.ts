@@ -6,16 +6,15 @@ interface ListAttributes {
  
 };
 
-/*
-  We have to declare the AuthorCreationAttributes to
-  tell Sequelize and TypeScript that the property id,
-  in this case, is optional to be passed at creation time
-*/
+interface DataValues {
+  dataValues?: any;
+}
+
 interface ListCreationAttributes
   extends Optional<ListAttributes, 'id'> {}
 
 interface ListInstance
-  extends Model<ListAttributes, ListCreationAttributes>,
+  extends Model<ListAttributes, ListCreationAttributes>, DataValues,
     ListAttributes {
       createdAt?: Date;
       updatedAt?: Date;

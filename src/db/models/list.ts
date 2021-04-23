@@ -1,7 +1,8 @@
-import { DataTypes } from 'sequelize/types';
-import { sequelize} from '.'
+import { DataTypes } from 'sequelize';
+import { sequelize } from '.'
 import ListInstance from '../../interfaces/list';
-import Task from './task';
+import Task from './Task';
+import { v4 } from 'uuid';
 
 const List = sequelize.define<ListInstance>(
   'List',
@@ -12,9 +13,10 @@ const List = sequelize.define<ListInstance>(
       primaryKey: true,
       type: DataTypes.UUID,
       unique: true,
+      defaultValue: v4()
     },
       listName: {
-        allowNull: true,
+        allowNull: false,
         type: DataTypes.TEXT,
       },
     
@@ -37,3 +39,5 @@ Task.belongsTo(List, {
   foreignKey: 'taskId',
   as: 'list'
 })
+
+export default List;
