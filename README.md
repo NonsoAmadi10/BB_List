@@ -22,7 +22,10 @@ This implemenation focuses on running your integration tests, when they pass and
 - Set up the needed prerequisite listed above
 - Trigger the github CI action in the `actions` tab on your github
 - Watch the tests pass and deploy
-- Login to your digital ocean droplet to see the newly deployed changes
+- Login to your digital ocean droplet to see the newly deployed app
+- Run `chmod u+x prod.sh` to confirm the required dependencies were installed
+- Run `yarn build` and `pm2 start build/src/` to start your app
+  
 
 ### Background Context
 - It is important to know there are three cons with this implementation:
